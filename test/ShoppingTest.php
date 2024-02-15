@@ -12,6 +12,15 @@
         }
 
         /**
+         * Test if the items list is returned.
+         */
+        public function testGetItemsList() {
+            $this->shopping->addItem('cellphone');
+            $this->shopping->addItem('mouse');
+            $this->assertEquals(['cellphone', 'mouse'], $this->shopping->getItems());
+        }
+
+        /**
          * Test if the empty items list is returned.
          */
         public function testGetEmptyItemsList() {
@@ -37,6 +46,15 @@
         }
 
         /**
+         * Test if duplicated item is added to the items list.
+         */
+        public function testAddDuplicatedItemToItemsList() {
+            $this->shopping->addItem('cellphone');
+            $this->shopping->addItem('cellphone');
+            $this->assertEquals(['cellphone'], $this->shopping->getItems());
+        }
+
+        /**
          * Test if the item is removed from the items list.
          */
         public function testRemoveItemFromItemsList() {
@@ -47,19 +65,19 @@
         }
 
         /**
-         * Test if duplicated item is added to the items list.
+         * Test if the nonexistent item is removed from the items list.
          */
-        public function testAddDuplicatedItemToItemsList() {
+        public function testRemoveNonxistentItemFromItemsList() {
             $this->shopping->addItem('cellphone');
-            $this->shopping->addItem('cellphone');
+            $this->shopping->removeItem(1);
             $this->assertEquals(['cellphone'], $this->shopping->getItems());
         }
 
         /**
-         * Test if the nonexistent item is removed from the items list.
+         * Test if the nonexistent item is removed from empty items list.
          */
-        public function testRemoveNonxistentItemFromItemsList() {
-            $this->shopping->removeItem(0);
+        public function testRemoveNonxistentItemFromEmptyItemsList() {
+            $this->shopping->removeItem(1);
             $this->assertEquals([], $this->shopping->getItems());
         }
 
@@ -69,6 +87,14 @@
         public function testClearItemsList() {
             $this->shopping->addItem('cellphone');
             $this->shopping->addItem('mouse');
+            $this->shopping->clearItemsList();
+            $this->assertEquals([], $this->shopping->getItems());
+        }
+
+        /**
+         * Test if the clearItemsList() removes items from empty items list.
+         */
+        public function testClearEmptyItemsList() {
             $this->shopping->clearItemsList();
             $this->assertEquals([], $this->shopping->getItems());
         }

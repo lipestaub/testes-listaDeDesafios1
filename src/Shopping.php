@@ -46,9 +46,7 @@
          * @return array
          */
         public function clearItemsList(): void {
-            foreach ($this->itemsList as $key=>$item) {
-                unset($this->itemsList[$key]);
-            }
+            $this->itemsList = [];
         }
     }
 ?>
