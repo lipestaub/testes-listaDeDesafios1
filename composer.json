@@ -1,0 +1,11 @@
+{
+    "name": "imply/primeiro-teste",
+    "authors": [
+        {
+            "name": "Felipe Staub"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
+}
