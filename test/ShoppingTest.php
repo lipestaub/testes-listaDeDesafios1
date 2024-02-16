@@ -6,8 +6,8 @@
     class ShoppingTest extends TestCase {
         private Shopping $shopping;
 
-        public function __construct(?string $name = null, array $data = [], $dataName = '') {
-            parent::__construct($name, $data, $dataName);
+        public function __construct(?string $name = null) {
+            parent::__construct($name);
             $this->shopping = new Shopping();
         }
 
@@ -52,6 +52,14 @@
             $this->shopping->addItem('cellphone');
             $this->shopping->addItem('cellphone');
             $this->assertEquals(['cellphone'], $this->shopping->getItems());
+        }
+
+        /**
+         * Test if a empty string is added to the items list.
+         */
+        public function testAddEmptyStringToItemsList() {
+            $this->shopping->addItem('');
+            $this->assertEquals([], $this->shopping->getItems());
         }
 
         /**

@@ -14,7 +14,7 @@
          * @return void
          */
         public function addItem(string $itemName): void {
-            if (!in_array($itemName, $this->getItems())) {
+            if (!in_array($itemName, $this->getItems()) && $itemName !== '') {
                 array_push($this->itemsList, $itemName);
             }
         }

@@ -7,7 +7,7 @@
          * @return string
          */
         public function capitalizeString(string $string): string {
-            return $string !== '' ? ucfirst($string) : $string;
+            return $string !== '' ? ucfirst($string) : '';
         }
 
         /**
@@ -30,8 +30,8 @@
         public function countVowels(string $string): int {
             $vowelsCount = 0;
 
-            foreach (str_split($string) as $character) {
-                if (in_array($character, ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])) {
+            foreach (preg_split('//u', $string) as $character) {
+                if (preg_match('/[aeiouà-úAEIOUÀ-Ú]/u', $character)) {
                     $vowelsCount++;
                 }
             }

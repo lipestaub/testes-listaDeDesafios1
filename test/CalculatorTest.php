@@ -6,8 +6,8 @@
     class CalculatorTest extends TestCase {
         private Calculator $calculator;
 
-        public function __construct(?string $name = null, array $data = [], $dataName = '') {
-            parent::__construct($name, $data, $dataName);
+        public function __construct(?string $name = null) {
+            parent::__construct($name);
             $this->calculator = new Calculator();
         }
 
@@ -29,8 +29,6 @@
          * Test if the sum of a positive number and a negative number return the expected result.
          */
         public function testPositiveAndNegativeNumbersSum() {
-            $calculator = new Calculator();
-
             $this->assertEquals(4, $this->calculator->sum(5, -1));
         }
 
